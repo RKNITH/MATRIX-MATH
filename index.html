@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrix</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Matrix </h1>
+        <nav>
+            <ul>
+                <li><a href="#history">History</a></li>
+                <li><a href="#definition">Definition</a></li>
+                <li><a href="#types">Types</a></li>
+                <li><a href="#operations">Operations</a></li>
+                <li><a href="#transpose">Transpose</a></li>
+                <li><a href="#determinant">Determinant</a></li>
+                <li><a href="#inverse">Inverse</a></li>
+                <li><a href="#cramers-rule">Cramer's Rule</a></li>
+                <li><a href="#consistency">Consistency Test</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="history">
+            <h2>History of Matrices</h2>
+            <p>Matrices, rectangular arrays of numbers or functions, are fundamental in various fields of mathematics
+                and science. The development of matrix theory spans several centuries and has been instrumental in the
+                advancement of linear algebra.</p>
+
+            <h3>Timeline of Key Developments</h3>
+
+            <ul>
+                <li><strong>2nd Century BC:</strong> The earliest known use of matrix-like arrangements can be traced
+                    back to ancient China. In the text "The Nine Chapters on the Mathematical Art," methods for solving
+                    systems of linear equations are presented, which implicitly involve matrices.</li>
+
+                <li><strong>1693:</strong> The term "matrix" (Latin for "womb" or "mother") was first used by the
+                    mathematician James Joseph Sylvester. However, matrices in their modern form were not yet fully
+                    developed.</li>
+
+                <li><strong>1850:</strong> Arthur Cayley published "A Memoir on the Theory of Matrices," which is
+                    considered one of the foundational works in matrix theory. Cayley introduced the concept of matrix
+                    multiplication and the Cayley-Hamilton theorem.</li>
+
+                <li><strong>Late 19th Century:</strong> Mathematicians such as Ferdinand Frobenius and Camille Jordan
+                    further developed the theory of matrices. Frobenius contributed to the understanding of matrix
+                    eigenvalues and eigenvectors, while Jordan introduced the Jordan normal form.</li>
+
+                <li><strong>Early 20th Century:</strong> Matrices became essential in quantum mechanics, thanks to
+                    physicists such as Werner Heisenberg and Paul Dirac. Heisenberg's matrix mechanics formulation of
+                    quantum mechanics laid the groundwork for modern quantum theory.</li>
+
+                <li><strong>1930s:</strong> John von Neumann and Alan Turing used matrices in the development of
+                    computer science and numerical analysis. Von Neumann's work on the foundations of quantum mechanics
+                    and Turing's work on algorithms and computation were heavily influenced by matrix theory.</li>
+
+                <li><strong>Mid to Late 20th Century:</strong> The development of digital computers revolutionized the
+                    use of matrices. Matrices became crucial in computer graphics, numerical simulations, and data
+                    analysis.</li>
+
+                <li><strong>21st Century:</strong> Matrices continue to play a vital role in various modern
+                    applications, including machine learning, cryptography, and network theory. Advances in
+                    computational power have enabled the use of large-scale matrices in big data and artificial
+                    intelligence.</li>
+            </ul>
+
+            <h3>Key Concepts and Applications</h3>
+
+            <p>Matrices are used in many mathematical and practical applications, including:</p>
+            <ul>
+                <li><strong>Solving Systems of Linear Equations:</strong> Matrices provide a concise way to represent
+                    and solve systems of linear equations using methods such as Gaussian elimination.</li>
+                <li><strong>Transformations in Geometry:</strong> Matrices are used to perform linear transformations,
+                    such as rotations, translations, and scalings, in computer graphics and geometry.</li>
+                <li><strong>Eigenvalues and Eigenvectors:</strong> These are essential in many areas, including
+                    stability analysis, vibration analysis, and quantum mechanics.</li>
+                <li><strong>Data Analysis and Statistics:</strong> Matrices are used in various statistical methods,
+                    including principal component analysis (PCA) and linear regression.</li>
+                <li><strong>Network Theory:</strong> Adjacency matrices represent graphs and networks, enabling the
+                    analysis of their properties and behaviors.</li>
+                <li><strong>Machine Learning:</strong> Matrices are fundamental in representing data sets,
+                    transformations, and operations in machine learning algorithms.</li>
+            </ul>
+
+            <p>Understanding the history and development of matrices provides insight into their wide-ranging
+                applications and their importance in modern science and technology.</p>
+        </section>
+
+        <section id="definition">
+            <h2>Definition of Matrices</h2>
+            <p>A matrix is a rectangular array of numbers arranged in rows and columns. Example:</p>
+            <pre>
+[1 2 3]
+[4 5 6]
+[7 8 9]
+            </pre>
+        </section>
+
+        <section id="types">
+            <h2>Types of Matrices</h2>
+
+            <article>
+                <h3>Row Matrix</h3>
+                <p>A row matrix is a matrix with only one row. It has dimensions 1 x n, where n is the number of
+                    columns. Example:</p>
+                <pre>
+        [1 2 3 4]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Column Matrix</h3>
+                <p>A column matrix is a matrix with only one column. It has dimensions m x 1, where m is the number of
+                    rows. Example:</p>
+                <pre>
+        [1]
+        [2]
+        [3]
+        [4]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Idempotent Matrix</h3>
+                <p>An idempotent matrix is a matrix which, when multiplied by itself, yields the same matrix. Formally,
+                    a matrix A is idempotent if A^2 = A. Example:</p>
+                <pre>
+        [2 -2]
+        [-2 2]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Nilpotent Matrix</h3>
+                <p>A nilpotent matrix is a matrix which, when raised to some positive integer power, results in the null
+                    matrix. Formally, a matrix A is nilpotent if A^k = 0 for some positive integer k. Example:</p>
+                <pre>
+        [0 1]
+        [-1 0]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Diagonal Matrix</h3>
+                <p>A diagonal matrix is a square matrix in which all elements outside the main diagonal are zero.
+                    Example:</p>
+                <pre>
+        [1 0 0]
+        [0 2 0]
+        [0 0 3]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Scalar Matrix</h3>
+                <p>A scalar matrix is a diagonal matrix in which all the elements on the main diagonal are equal.
+                    Example:</p>
+                <pre>
+        [3 0 0]
+        [0 3 0]
+        [0 0 3]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Unit Matrix</h3>
+                <p>A unit matrix, or identity matrix, is a diagonal matrix in which all the elements on the main
+                    diagonal are ones. Example:</p>
+                <pre>
+        [1 0 0]
+        [0 1 0]
+        [0 0 1]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Null Matrix</h3>
+                <p>A null matrix, or zero matrix, is a matrix in which all elements are zero. Example:</p>
+                <pre>
+        [0 0 0]
+        [0 0 0]
+        [0 0 0]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Symmetric Matrix</h3>
+                <p>A symmetric matrix is a square matrix that is equal to its transpose. Formally, a matrix A is
+                    symmetric if A = A^T. Example:</p>
+                <pre>
+        [1 2 3]
+        [2 4 5]
+        [3 5 6]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Skew-Symmetric Matrix</h3>
+                <p>A skew-symmetric matrix is a square matrix that is equal to the negative of its transpose. Formally,
+                    a matrix A is skew-symmetric if A = -A^T. Example:</p>
+                <pre>
+        [ 0  2 -3]
+        [-2  0  4]
+        [ 3 -4  0]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Triangular Matrix</h3>
+                <p>A triangular matrix is a square matrix where all elements above or below the main diagonal are zero.
+                    There are two types:</p>
+
+                <h4>Upper Triangular Matrix</h4>
+                <p>All elements below the main diagonal are zero. Example:</p>
+                <pre>
+        [1 2 3]
+        [0 4 5]
+        [0 0 6]
+                </pre>
+
+                <h4>Lower Triangular Matrix</h4>
+                <p>All elements above the main diagonal are zero. Example:</p>
+                <pre>
+        [1 0 0]
+        [2 3 0]
+        [4 5 6]
+                </pre>
+            </article>
+        </section>
+
+
+        <section id="operations">
+            <h2>Matrix Operations</h2>
+
+            <article>
+                <h3>Addition and Subtraction</h3>
+                <p>Addition and subtraction of matrices can only be performed on matrices of the same dimensions. The
+                    operations are done element-wise.</p>
+                <p>Example of Addition:</p>
+                <pre>
+        [1 2]   [3 4]   [1+3 2+4]   [4 6]
+        [5 6] + [7 8] = [5+7 6+8] = [12 14]
+                </pre>
+                <p>Example of Subtraction:</p>
+                <pre>
+        [3 4]   [1 2]   [3-1 4-2]   [2 2]
+        [7 8] - [5 6] = [7-5 8-6] = [2 2]
+                </pre>
+            </article>
+
+            <article>
+                <h3>Multiplication</h3>
+                <p>Matrix multiplication involves multiplying rows of the first matrix by columns of the second matrix
+                    and summing the products. It can only be performed when the number of columns in the first matrix
+                    equals the number of rows in the second matrix.</p>
+                <p>Example:</p>
+                <pre>
+        [1 2]   [5 6]   [(1*5 + 2*7) (1*6 + 2*8)]   [19 22]
+        [3 4] * [7 8] = [(3*5 + 4*7) (3*6 + 4*8)] = [43 50]
+                </pre>
+
+                <div>
+                    <label for="rows1">Rows in Matrix 1:</label>
+                    <input type="number" id="rows1" min="1" max="10"
+                        onchange="createMatrixInputs('matrix1', 'rows1', 'cols1')">
+                    <label for="cols1">Columns in Matrix 1:</label>
+                    <input type="number" id="cols1" min="1" max="10"
+                        onchange="createMatrixInputs('matrix1', 'rows1', 'cols1')">
+                </div>
+                <div id="matrix1Inputs"></div>
+
+                <div>
+                    <label for="rows2">Rows in Matrix 2:</label>
+                    <input type="number" id="rows2" min="1" max="10"
+                        onchange="createMatrixInputs('matrix2', 'rows2', 'cols2')">
+                    <label for="cols2">Columns in Matrix 2:</label>
+                    <input type="number" id="cols2" min="1" max="10"
+                        onchange="createMatrixInputs('matrix2', 'rows2', 'cols2')">
+                </div>
+                <div id="matrix2Inputs"></div>
+
+                <button onclick="calculateMultiplication()">Calculate</button>
+                <pre id="result"></pre>
+            </article>
+        </section>
+
+
+        <section id="transpose">
+            <h2>Transpose of a Matrix</h2>
+            <p>The transpose of a matrix is an operation that flips the matrix over its diagonal. This means that the
+                rows of the original matrix become the columns in the transposed matrix, and the columns become the
+                rows.</p>
+
+            <p>Mathematically, the transpose of a matrix A is denoted by A<sup>T</sup>. If matrix A is an m x n matrix,
+                then the transpose of A, denoted A<sup>T</sup>, is an n x m matrix.</p>
+
+            <h3>Example:</h3>
+            <p>Consider the following matrix A:</p>
+            <pre>
+        A = [1 2 3]
+            [4 5 6]
+            </pre>
+
+            <p>The transpose of matrix A, denoted as A<sup>T</sup>, is:</p>
+            <pre>
+        A<sup>T</sup> = [1 4]
+                  [2 5]
+                  [3 6]
+            </pre>
+
+            <h3>Properties of the Transpose:</h3>
+            <ul>
+                <li><strong>(A<sup>T</sup>)<sup>T</sup> = A:</strong> The transpose of the transpose of a matrix is the
+                    original matrix.</li>
+                <li><strong>(A + B)<sup>T</sup> = A<sup>T</sup> + B<sup>T</sup>:</strong> The transpose of a sum of two
+                    matrices is the sum of their transposes.</li>
+                <li><strong>(kA)<sup>T</sup> = kA<sup>T</sup>:</strong> The transpose of a scalar multiple of a matrix
+                    is the scalar multiple of the transpose of the matrix.</li>
+                <li><strong>(AB)<sup>T</sup> = B<sup>T</sup>A<sup>T</sup>:</strong> The transpose of a product of two
+                    matrices is the product of their transposes in reverse order.</li>
+            </ul>
+
+            <h3>Applications of Transpose:</h3>
+            <p>The transpose operation is used in various applications such as:</p>
+            <ul>
+                <li><strong>Linear Algebra:</strong> Transpose is used to define symmetric and skew-symmetric matrices,
+                    and to find the orthogonal complement of a matrix.</li>
+                <li><strong>Computer Graphics:</strong> Transpose is used in transformations and to represent rotations
+                    in 3D space.</li>
+                <li><strong>Statistics:</strong> Transpose is used in covariance matrices and in the representation of
+                    data sets.</li>
+            </ul>
+
+            <h3>Calculate Transpose:</h3>
+            <div>
+                <label for="transposeMatrix">Enter Matrix (comma-separated values, rows separated by
+                    semicolons):</label>
+                <textarea id="transposeMatrix" rows="3" cols="20"></textarea>
+            </div>
+            <button onclick="calculateTranspose()">Calculate Transpose</button>
+            <pre id="transposeResult"></pre>
+        </section>
+
+        <section id="determinant">
+            <h2>Determinant of a Matrix</h2>
+            <p>The determinant is a scalar value that can be computed from the elements of a square matrix. It is a
+                useful value in linear algebra and has many applications in areas such as systems of linear equations,
+                geometry, and calculus.</p>
+
+            <h3>Theory:</h3>
+            <p>The determinant of a 2x2 matrix:</p>
+            <pre>
+        A = [a b]
+            [c d]
+            
+        det(A) = ad - bc
+            </pre>
+
+            <p>The determinant of a 3x3 matrix:</p>
+            <pre>
+        A = [a b c]
+            [d e f]
+            [g h i]
+            
+        det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)
+            </pre>
+
+            <p>For larger matrices, the determinant can be calculated using a method called expansion by minors or using
+                row reduction techniques.</p>
+
+            <h3>Properties of Determinants:</h3>
+            <ul>
+                <li><strong>Det(A) = Det(A<sup>T</sup>):</strong> The determinant of a matrix is equal to the
+                    determinant of its transpose.</li>
+                <li><strong>Det(AB) = Det(A) * Det(B):</strong> The determinant of the product of two matrices is the
+                    product of their determinants.</li>
+                <li><strong>If A is a triangular matrix:</strong> The determinant of a triangular matrix (upper or
+                    lower) is the product of its diagonal elements.</li>
+                <li><strong>Det(A<sup>-1</sup>) = 1/Det(A):</strong> The determinant of the inverse of a matrix is the
+                    reciprocal of the determinant of the matrix.</li>
+                <li><strong>If A has a row or column of zeros:</strong> The determinant of the matrix is zero.</li>
+                <li><strong>If two rows or columns of A are identical:</strong> The determinant of the matrix is zero.
+                </li>
+                <li><strong>Row operations effect on determinant:</strong>
+                    <ul>
+                        <li>Swapping two rows or columns changes the sign of the determinant.</li>
+                        <li>Multiplying a row by a scalar multiplies the determinant by that scalar.</li>
+                        <li>Adding a multiple of one row to another row does not change the determinant.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h3>Applications of Determinants:</h3>
+            <ul>
+                <li><strong>Solving Systems of Linear Equations:</strong> Determinants are used in Cramer's Rule to
+                    solve systems of linear equations.</li>
+                <li><strong>Calculating Inverses:</strong> The inverse of a matrix can be computed using determinants.
+                </li>
+                <li><strong>Finding Area and Volume:</strong> Determinants are used to calculate areas and volumes in
+                    geometry.</li>
+                <li><strong>Eigenvalues:</strong> Determinants are used to find the eigenvalues of a matrix.</li>
+            </ul>
+
+            <h3>Calculate Determinant:</h3>
+            <div>
+                <label for="detMatrix">Enter Square Matrix (comma-separated values, rows separated by
+                    semicolons):</label>
+                <textarea id="detMatrix" rows="3" cols="20"></textarea>
+            </div>
+            <button onclick="calculateDeterminant()">Calculate Determinant</button>
+            <pre id="detResult"></pre>
+        </section>
+
+        <section id="inverse">
+            <h2>Inverse of a Matrix</h2>
+            <p>The inverse of a matrix is a matrix that, when multiplied by the original matrix, results in the identity
+                matrix. The identity matrix is a square matrix with 1's on the diagonal and 0's elsewhere.</p>
+
+            <h3>Theory:</h3>
+            <p>For a square matrix ( A ), its inverse ( A<sup>-1</sup></sup>) satisfies the equation:</p>
+            <pre>
+        A * A<sup>-1</sup> = I
+            </pre>
+            <p>where ( I) is the identity matrix of the same dimension as ( A).</p>
+
+            <h3>Conditions for Inversibility:</h3>
+            <p>A matrix ( A ) is invertible (also called non-singular) if and only if its determinant is non-zero. If
+                the determinant of ( A ) is zero, then ( A ) does not have an inverse and is called a singular
+                matrix.</p>
+
+            <h3>Calculating the Inverse:</h3>
+            <p>For a 2x2 matrix:</p>
+            <pre>
+        A = [a b]
+            [c d]
+        
+        A<sup>-1</sup> = (1 / (ad - bc)) * [ d -b]
+                                           [-c  a]
+            </pre>
+            <p>For larger matrices, the inverse can be calculated using methods such as:</p>
+            <ul>
+                <li><strong>Gaussian Elimination:</strong> Transforming the matrix into its row echelon form and
+                    performing row operations to obtain the identity matrix.</li>
+                <li><strong>Adjoint Method:</strong> Using the matrix of cofactors (adjugate matrix) and dividing by the
+                    determinant.</li>
+            </ul>
+
+            <h3>Properties of the Inverse:</h3>
+            <ul>
+                <li><strong>(A<sup>-1</sup>)<sup>-1</sup> = A:</strong> The inverse of the inverse of a matrix is the
+                    original matrix.</li>
+                <li><strong>(AB)<sup>-1</sup> = B<sup>-1</sup>A<sup>-1</sup>:</strong> The inverse of a product of two
+                    matrices is the product of their inverses in reverse order.</li>
+                <li><strong>(A<sup>T</sup>)<sup>-1</sup> = (A<sup>-1</sup>)<sup>T</sup>:</strong> The inverse of the
+                    transpose of a matrix is the transpose of the inverse of the matrix.</li>
+            </ul>
+
+            <h3>Applications of the Inverse:</h3>
+            <ul>
+                <li><strong>Solving Systems of Linear Equations:</strong> The inverse of a matrix can be used to solve
+                    linear systems of the form ( AX = B ) by computing ( X = A<sup>-1</sup>B).</li>
+                <li><strong>Computer Graphics:</strong> Inverse matrices are used in transformations and to undo
+                    operations such as rotations and scaling.</li>
+                <li><strong>Control Theory:</strong> Inverse matrices are used in the design and analysis of control
+                    systems.</li>
+            </ul>
+
+            <h3>Calculate Inverse:</h3>
+            <div>
+                <label for="inverseMatrix">Enter Square Matrix (comma-separated values, rows separated by
+                    semicolons):</label>
+                <textarea id="inverseMatrix" rows="3" cols="20"></textarea>
+            </div>
+            <button onclick="calculateInverse()">Calculate Inverse</button>
+            <pre id="inverseResult"></pre>
+        </section>
+
+        <section id="cramers-rule">
+            <h2>Cramer's Rule</h2>
+            <p>Cramer's Rule is a mathematical theorem used to solve systems of linear equations with an equal number of
+                equations and unknowns, using determinants. It provides an explicit formula for the solution of the
+                system in terms of the determinants of the coefficient matrix and matrices formed by replacing columns
+                of the coefficient matrix.</p>
+
+            <h3>Theory:</h3>
+            <p>Consider a system of linear equations represented in matrix form as:</p>
+            <pre>
+        AX = B
+            </pre>
+            <p>where <em>A</em> is the coefficient matrix, <em>X</em> is the column vector of unknowns, and <em>B</em>
+                is the column vector of constants. Cramer’s Rule states that if the determinant of matrix <em>A</em>
+                (denoted as <em>det(A)</em>) is non-zero, the solution for each variable <em>x<sub>i</sub></em> in
+                vector <em>X</em> can be found using:</p>
+            <pre>
+        x<sub>i</sub> = frac{det(A<sub>i</sub>)}{det(A)}
+            </pre>
+            <p>where <em>A<sub>i</sub></em> is the matrix obtained by replacing the <em>i</em>-th column of <em>A</em>
+                with the vector <em>B</em>.</p>
+
+            <h3>Example:</h3>
+            <p>Consider the following system of equations:</p>
+            <pre>
+        2x + 3y = 8
+        4x + 5y = 18
+            </pre>
+            <p>This can be written in matrix form:</p>
+            <pre>
+        A = [2 3]
+            [4 5]
+        
+        X = [x]
+            [y]
+        
+        B = [8]
+            [18]
+            </pre>
+
+            <p>First, calculate the determinant of <em>A</em>:</p>
+            <pre>
+        det(A) = (2 * 5) - (3 * 4) = 10 - 12 = -2
+            </pre>
+
+            <p>Next, find <em>A<sub>1</sub></em> by replacing the first column of <em>A</em> with <em>B</em>:</p>
+            <pre>
+        A<sub>1</sub> = [8 3]
+                     [18 5]
+        
+        det(A<sub>1</sub>) = (8 * 5) - (3 * 18) = 40 - 54 = -14
+            </pre>
+
+            <p>Now, find <em>A<sub>2</sub></em> by replacing the second column of <em>A</em> with <em>B</em>:</p>
+            <pre>
+        A<sub>2</sub> = [2 8]
+                     [4 18]
+        
+        det(A<sub>2</sub>) = (2 * 18) - (8 * 4) = 36 - 32 = 4
+            </pre>
+
+            <p>Finally, calculate <em>x</em> and <em>y</em>:</p>
+            <pre>
+        x = det(A<sub>1</sub>) / det(A) = -14 / -2 = 7
+        y = det(A<sub>2</sub>) / det(A) = 4 / -2 = -2
+            </pre>
+            <p>Thus, the solution to the system of equations is:</p>
+            <pre>
+        x = 7, y = -2
+            </pre>
+
+            <h3>Properties of Cramer's Rule:</h3>
+            <ul>
+                <li><strong>Applicable only for square matrices:</strong> Cramer’s Rule can only be used for systems of
+                    equations where the number of equations equals the number of unknowns.</li>
+                <li><strong>Requires non-zero determinant:</strong> The determinant of the coefficient matrix must be
+                    non-zero for a unique solution to exist.</li>
+                <li><strong>Simple computation:</strong> Cramer’s Rule can be computationally intensive for large
+                    systems due to the need for multiple determinants.</li>
+            </ul>
+
+            <h3>Applications of Cramer's Rule:</h3>
+            <ul>
+                <li><strong>Solving Linear Systems:</strong> Cramer’s Rule is a straightforward method for finding the
+                    solutions of small linear systems.</li>
+                <li><strong>Theoretical Analysis:</strong> It is useful in theoretical contexts to demonstrate the
+                    existence of solutions in linear algebra.</li>
+            </ul>
+
+            <h3>Calculate Using Cramer's Rule:</h3>
+            <div>
+                <label for="cramerMatrix">Enter Coefficient Matrix (comma-separated values, rows separated by
+                    semicolons):</label>
+                <textarea id="cramerMatrix" rows="3" cols="20"></textarea>
+            </div>
+            <div>
+                <label for="cramerConstants">Enter Constants Vector (comma-separated):</label>
+                <textarea id="cramerConstants" rows="1" cols="20"></textarea>
+            </div>
+            <button onclick="calculateCramersRule()">Calculate using Cramer's Rule</button>
+            <pre id="cramerResult"></pre>
+        </section>
+
+        <section id="consistency">
+            <h2>Consistency Test of Linear Equations</h2>
+            <p>The consistency of a system of linear equations determines whether the system has at least one solution.
+                A system can be classified as consistent or inconsistent based on the relationships among the equations.
+            </p>
+
+            <h3>Theory:</h3>
+            <p>A system of linear equations is said to be consistent if it has at least one solution, while it is
+                inconsistent if it has no solutions. There are three types of consistency for a system of linear
+                equations:</p>
+            <ul>
+                <li><strong>Consistent and Independent:</strong> The system has exactly one solution. This occurs when
+                    the equations represent lines (or planes) that intersect at a single point.</li>
+                <li><strong>Consistent and Dependent:</strong> The system has infinitely many solutions. This occurs
+                    when the equations represent the same line (or plane), leading to multiple intersection points.</li>
+                <li><strong>Inconsistent:</strong> The system has no solutions. This occurs when the equations represent
+                    parallel lines (or planes) that never intersect.</li>
+            </ul>
+
+            <h3>Example:</h3>
+            <p>Consider the following systems of equations:</p>
+
+            <h4>1. Consistent and Independent:</h4>
+            <pre>
+        2x + 3y = 5
+        4x - y = 1
+            </pre>
+            <p>This system has a unique solution. You can solve it using substitution or elimination methods.</p>
+
+            <h4>2. Consistent and Dependent:</h4>
+            <pre>
+        x + 2y = 4
+        2x + 4y = 8
+            </pre>
+            <p>Here, the second equation is a multiple of the first, indicating infinitely many solutions (the equations
+                represent the same line).</p>
+
+            <h4>3. Inconsistent:</h4>
+            <pre>
+        x + y = 2
+        x + y = 5
+            </pre>
+            <p>In this case, the two equations represent parallel lines, which means there is no solution.</p>
+
+            <h3>Consistency Tests:</h3>
+            <p>To determine the consistency of a system of equations, you can use:</p>
+            <ul>
+                <li><strong>Row Echelon Form:</strong> Transform the system into row echelon form (REF) or reduced row
+                    echelon form (RREF). Analyze the resulting matrix:</li>
+                <ul>
+                    <li>If there are any rows where all coefficients are zero and the constant is non-zero (e.g., 0 =
+                        5), the system is inconsistent.</li>
+                    <li>If there are no such rows, the system is consistent.</li>
+                </ul>
+                <li><strong>Determinants:</strong> For a square system (n equations, n unknowns), if the determinant of
+                    the coefficient matrix is non-zero, the system is consistent and has a unique solution.</li>
+                </li>
+            </ul>
+
+            <h3>Calculate Consistency:</h3>
+            <div>
+                <label for="consistencyMatrix">Enter Coefficient Matrix (comma-separated values, rows separated by
+                    semicolons):</label>
+                <textarea id="consistencyMatrix" rows="3" cols="20"></textarea>
+            </div>
+            <div>
+                <label for="consistencyConstants">Enter Constants Vector (comma-separated):</label>
+                <textarea id="consistencyConstants" rows="1" cols="20"></textarea>
+            </div>
+            <button onclick="checkConsistency()">Check Consistency</button>
+            <pre id="consistencyResult"></pre>
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <footer>
+        <p>&copy; 2024 <span style="color: cornflowerblue; font-size: 20px; font-weight: 800;">Raviranjan</span></p>
+    </footer>
+    <script src="index.js"></script>
+</body>
+
+</html>
